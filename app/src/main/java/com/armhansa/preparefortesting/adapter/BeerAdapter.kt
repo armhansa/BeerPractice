@@ -38,7 +38,7 @@ class BeerViewHolder(private val parent: ViewGroup) : RecyclerView.ViewHolder(
     private val beerDesc: TextView = itemView.findViewById(R.id.beerDesc)
 
     fun bind(beerModel: BeerModel, listener: OnClickBeerCellListener) {
-        beerName.text = "${beerModel.name} : ABV=${beerModel.abv}%"
+        beerName.text = parent.context.getString(R.string.beer_title, beerModel.name, beerModel.abv)
         Picasso.with(parent.context).load(beerModel.imageUrl).into(beerImage)
         beerDesc.text = beerModel.description
         itemView.setOnClickListener {

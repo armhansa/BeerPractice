@@ -27,7 +27,7 @@ class BeerDetailActivity : AppCompatActivity() {
 
         val beerModel: BeerModel = intent.getParcelableExtra(TODO_TITLE_KEY)
         beerModel.name?.let {
-            beerName.text = "${beerModel.name} : ABV=${beerModel.abv}%"
+            beerName.text = getString(R.string.beer_title, beerModel.name, beerModel.abv)
             Picasso.with(this).load(beerModel.imageUrl).into(beerImage)
             beerDesc.text = beerModel.description
         }

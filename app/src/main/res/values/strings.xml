@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PrepareForTesting</string>
+    <string name="beer_title">%1$s  : ABV=%2$.1e%%</string>
 </resources>

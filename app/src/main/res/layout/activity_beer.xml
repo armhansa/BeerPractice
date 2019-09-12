@@ -8,25 +8,6 @@
         android:padding="8dp"
         tools:context=".activity.beer.BeerActivity">
 
-    <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="75dp"-->
-            <!--android:padding="8dp">-->
-
-        <!--<EditText-->
-                <!--android:id="@+id/inputTodo"-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_weight="1"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:hint="Input todo"/>-->
-
-        <!--<Button-->
-                <!--android:id="@+id/btnAdd"-->
-                <!--android:text="ADD"-->
-                <!--android:layout_width="100dp"-->
-                <!--android:layout_height="match_parent"/>-->
-    <!--</LinearLayout>-->
-
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvTodo"
             android:layout_width="match_parent"

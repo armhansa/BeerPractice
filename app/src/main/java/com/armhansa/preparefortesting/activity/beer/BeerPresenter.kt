@@ -20,7 +20,6 @@ class BeerPresenter(var view: BeerInterface) {
                         view.setBeer(this)
                     }
                 }
-
             }
 
         })
