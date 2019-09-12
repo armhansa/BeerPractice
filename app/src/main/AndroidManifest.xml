@@ -24,8 +24,6 @@
         </activity>
         <activity android:name=".activity.BeerDetailActivity">
         </activity>
-        <activity android:name=".activity.beer.BeerActivity">
-        </activity>
     </application>
 
 </manifest>

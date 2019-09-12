@@ -14,10 +14,12 @@ class BeerDetailActivity : AppCompatActivity() {
     companion object {
         private const val TODO_TITLE_KEY = "BeerModelKey"
 
-        fun startActivity(context: Context, beerModel: BeerModel) {
-            context.startActivity(Intent(context, BeerDetailActivity::class.java).also { intent ->
-                intent.putExtra(TODO_TITLE_KEY, beerModel)
-            })
+        fun startActivity(context: Context?, beerModel: BeerModel) {
+            context?.let {
+                it.startActivity(Intent(context, BeerDetailActivity::class.java).also { intent ->
+                    intent.putExtra(TODO_TITLE_KEY, beerModel)
+                })
+            }
         }
     }
 

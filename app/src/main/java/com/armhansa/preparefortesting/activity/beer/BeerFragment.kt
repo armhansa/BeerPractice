@@ -1,8 +1,11 @@
 package com.armhansa.preparefortesting.activity.beer
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.armhansa.preparefortesting.R
 import com.armhansa.preparefortesting.activity.BeerDetailActivity
@@ -11,42 +14,34 @@ import com.armhansa.preparefortesting.adapter.BeerAdapter
 import com.armhansa.preparefortesting.model.BeerModel
 import kotlinx.android.synthetic.main.activity_beer.*
 
-class BeerActivity : AppCompatActivity(), OnClickBeerCellListener,
+class BeerFragment : Fragment(), OnClickBeerCellListener,
     BeerInterface {
     private lateinit var beerAdapter: BeerAdapter
 
     private val beerPresenter: BeerPresenter =
         BeerPresenter(this)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_beer)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? = inflater.inflate(R.layout.activity_beer, container, false)
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         beerAdapter = BeerAdapter(this)
         rvTodo.adapter = beerAdapter
-        rvTodo.layoutManager = LinearLayoutManager(this)
+        rvTodo.layoutManager = LinearLayoutManager(context)
 
         beerPresenter.getBeers()
 //        rvTodo.itemAnimator = DefaultItemAnimator()
-
-//        btnAdd.setOnClickListener {
-//            inputTodo.text?.let {
-//                if (it.isNotEmpty()) {
-//                    val todoModel = TodoModel(it.toString(), false)
-//                    beerAdapter.addNewBeerItems(todoModel)
-//                    inputTodo.text = null
-//                }
-//            }
-//        }
-
     }
 
     override fun onClick(beerModel: BeerModel) {
-        BeerDetailActivity.startActivity(this, beerModel)
+        BeerDetailActivity.startActivity(context, beerModel)
     }
 
     override fun alertError(t: Throwable) {
-        Toast.makeText(this, t.message, Toast.LENGTH_LONG).show()
+        Toast.makeText(context, t.message, Toast.LENGTH_LONG).show()
     }
 
     override fun setBeer(beerList: List<BeerModel>) {
