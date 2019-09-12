@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.armhansa.preparefortesting.R
 import com.armhansa.preparefortesting.model.BeerModel
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail.*
 
 class BeerDetailActivity : AppCompatActivity() {
@@ -26,7 +27,9 @@ class BeerDetailActivity : AppCompatActivity() {
 
         val beerModel: BeerModel = intent.getParcelableExtra(TODO_TITLE_KEY)
         beerModel.name?.let {
-            txtTodo.text = it
+            beerName.text = "${beerModel.name} : ABV=${beerModel.abv}%"
+            Picasso.with(this).load(beerModel.imageUrl).into(beerImage)
+            beerDesc.text = beerModel.description
         }
     }
 
